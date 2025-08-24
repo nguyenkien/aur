@@ -1,0 +1,51 @@
+name: Make Repository
+
+on:
+  push:
+    branches:
+      - main
+      - debug
+  schedule:
+    - cron: "21 4 * * 0"
+
+jobs:
+  build_repository:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get current time and date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M')"
+
+      - name: Build Packages
+        uses: nguyenkien/build-aur-packages@v1
+        with:
+          name: aur
+          packages: >
+            cloudflare-warp-bin
+            dissent-bin
+            extension-manager
+            gradia
+            localsend-bin
+            microsoft-edge-stable-bin
+            refine
+
+      - name: List generated Files
+        run: ls -1 > ${{ github.workspace }}/files.txt
+      - name: Remove the current data from the release
+        uses: kopp/action-delete-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: aur
+      - name: Upload Files to Release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: aur
+          name: aur build ${{ github.run_number }} from ${{ steps.date.outputs.date }}
+          body: aur build ${{ github.run_number }} from ${{ steps.date.outputs.date }}
+          files: |
+            ${{ github.workspace }}/*
+          draft: false
+          prerelease: false
