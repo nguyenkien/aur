@@ -27,6 +27,7 @@ jobs:
             gradia
             localsend-bin
             microsoft-edge-stable-bin
+            planify
             refine
 
       - name: List generated Files
