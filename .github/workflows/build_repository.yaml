@@ -29,6 +29,7 @@ jobs:
             microsoft-edge-stable-bin
             planify
             refine
+            workbench
 
       - name: List generated Files
         run: ls -1 > ${{ github.workspace }}/files.txt
