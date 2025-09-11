@@ -21,14 +21,6 @@ jobs:
         with:
           name: aur
           packages: >
-            cloudflare-warp-bin
-            dissent-bin
-            extension-manager
-            gradia
-            localsend-bin
-            microsoft-edge-stable-bin
-            planify
-            refine
             workbench
 
       - name: List generated Files
