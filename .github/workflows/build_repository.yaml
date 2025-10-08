@@ -28,6 +28,7 @@ jobs:
             localsend-bin
             microsoft-edge-stable-bin
             refine
+            ulauncher-git
 
       - name: List generated Files
         run: ls -1 > ${{ github.workspace }}/files.txt
