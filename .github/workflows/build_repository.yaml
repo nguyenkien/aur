@@ -21,7 +21,7 @@ jobs:
         with:
           name: aur
           packages: >
-            ulauncher-git
+            jetbrains-toolbox
 
       - name: List generated Files
         run: ls -1 > ${{ github.workspace }}/files.txt
