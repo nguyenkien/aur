@@ -21,7 +21,7 @@ jobs:
         with:
           name: aur
           packages: >
-            jetbrains-toolbox
+            sysc-greet
 
       - name: List generated Files
         run: ls -1 > ${{ github.workspace }}/files.txt
