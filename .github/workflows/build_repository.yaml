@@ -21,7 +21,7 @@ jobs:
         with:
           name: aur
           packages: >
-            sysc-greet
+            pods
 
       - name: List generated Files
         run: ls -1 > ${{ github.workspace }}/files.txt
